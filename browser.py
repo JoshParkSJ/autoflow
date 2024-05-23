@@ -109,7 +109,8 @@ if __name__ == '__main__':
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
         browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393")
-
+        # browser.page.wait_for_load_state("networkidle")
+        
         response = input("ready?")
 
         html_content = browser.page.content()
@@ -134,3 +135,27 @@ if __name__ == '__main__':
         # )
  
         # print(response.content)
+
+
+'''
+one big prompt "Jarvis"
+    - feed it HTML (cleaned) + screenshot
+    - prompt has many actions, 
+    - agent picks 1 action [ACT: my_action] with desired html tags
+    - parse the action in-code, execute action (browser.button.click())
+
+[screenshot of full page]
+This is my webpage,
+
+here are the ui elements that corresponds to the html tags
+
+<button>add activity</button>
+[screenshot of button]
+
+<button>add intergration</button>
+[screenshot of button]
+
+<input />
+[screenshot of input]
+
+'''
