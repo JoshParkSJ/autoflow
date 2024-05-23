@@ -60,10 +60,10 @@ class BrowserProcess:
     def port(self):
         return self._port
 
-    def __del__(self):
-        if self._process is not None:
-            self._process.kill()
-            self._process.wait()
+    # def __del__(self):
+    #     if self._process is not None:
+    #         self._process.kill()
+    #         self._process.wait()
 
 
 class SinglePageBrowser:
@@ -87,9 +87,9 @@ class SinglePageBrowser:
             self._setup()
         return self._page_context.page
 
-    def __del__(self):
-        self._page_context = None
-        self._browser_process = None
+    # def __del__(self):
+    #     self._page_context = None
+    #     self._browser_process = None
 
 
 @dataclasses.dataclass
@@ -98,10 +98,10 @@ class PageContext:
     context: BrowserContext
     page: Page
 
-    def __del__(self):
-        self.page.close()
-        self.context.close()
-        self.browser.close()
+    # def __del__(self):
+    #     self.page.close()
+    #     self.context.close()
+    #     self.browser.close()
 
 
 if __name__ == '__main__':
@@ -113,7 +113,11 @@ if __name__ == '__main__':
         response = input("ready?")
 
         html_content = browser.page.content()
-        print(html_content)
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+        for tag in soup.body.find_all(text=True):
+            if tag.parent.name not in ["style", "script", "head", "title", "meta", "[document]"]:
+                print(tag)
 
         # model = get_llm()
         # response = model.invoke(
