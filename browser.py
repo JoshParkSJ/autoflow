@@ -1,21 +1,22 @@
 import dataclasses
+import openai
+import random
+import re
 import subprocess
 import time
 from pathlib import Path
-import random
-from playwright.sync_api import sync_playwright
-from playwright.sync_api._generated import Playwright as SyncPlaywright, Page, BrowserContext, Browser
-from playwright.sync_api import expect
-from icecream import ic
-import openai
-from langchain_openai import AzureChatOpenAI
-from bs4 import BeautifulSoup
 
-token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2MkMzQ0E5MEYyMzNBMDMzNEMxNEM0MDVDNDJCMEQyRUQ3ODQ3OTYiLCJ4NXQiOiJwaXc4cVE4ak9nTTB3VXhBWEVLdzB1MTRSNVkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NDk5MDU5LCJpYXQiOjE3MTY0OTkzNTksImV4cCI6MTcxNjUwMjk1OSwiYXVkIjpbIk9yY2hlc3RyYXRvckFwaVVzZXJBY2Nlc3MiLCJNYW5hZ2VMaWNlbnNlIiwiT01TIiwiQWlGYWJyaWMiLCJCdXNpbmVzc1VzZXJQb3J0YWxQcm94eUFwaSIsIkRhdGFTZXJ2aWNlQXBpVXNlckFjY2VzcyIsIkNvbm5lY3Rpb25TZXJ2aWNlIiwiQ29ubmVjdGlvblNlcnZpY2VVc2VyIiwiSmFtSmFtQXBpIiwiSW5zaWdodHMiLCJJbnNpZ2h0cy5JbnRlZ3JhdGlvbnMiLCJQcm9jZXNzTWluaW5nIiwiVGFza01pbmluZyIsIlNlcnZlcmxlc3NDb250cm9sUGxhbmUiLCJJZGVudGl0eVNlcnZlckFwaSIsIkRvY3VtZW50VW5kZXJzdGFuZGluZyIsIkRvY3VtZW50VW5kZXJzdGFuZGluZ1MyUyIsIlN0dWRpb1dlYkJhY2tlbmQiLCJTdHVkaW9XZWJUeXBlQ2FjaGVTZXJ2aWNlIiwiQ3VzdG9tZXJQb3J0YWwiLCJBdWRpdCIsIlVpUGF0aC5Eb2N1bWVudFVuZGVyc3RhbmRpbmciLCJBdXRvbWF0aW9uU29sdXRpb25zIiwiUmVpbmZlciIsIlJlc291cmNlQ2F0YWxvZ1NlcnZpY2VBcGkiLCJTZWFyY2hSZWNvbW1lbmRhdGlvbnNTZXJ2aWNlIiwiSW5zaWdodHMuUmVhbFRpbWVEYXRhIiwiR2xvYmFsQ2xpZW50TWFuYWdlbWVudC5JbnRlcm5hbCIsIkFjYWRlbXkiXSwic2NvcGUiOlsiQWNhZGVteSIsIkFpRmFicmljIiwiQXVkaXQuUmVhZCIsIkF1dG9tYXRpb25Tb2x1dGlvbnMiLCJCdXNpbmVzc1VzZXJQb3J0YWxQcm94eUFwaSIsIkNvbm5lY3Rpb25TZXJ2aWNlIiwiQ29ubmVjdGlvblNlcnZpY2VVc2VyIiwiQ3VzdG9tZXJQb3J0YWwiLCJEYXRhU2VydmljZUFwaVVzZXJBY2Nlc3MiLCJEaXJlY3RvcnkiLCJEb2N1bWVudFVuZGVyc3RhbmRpbmciLCJEdS5BaVByb3h5IiwiRHUuQ2xhc3NpZmljYXRpb24uQXBpIiwiRHUuRGlnaXRpemF0aW9uLkFwaSIsIkR1LkV4dHJhY3Rpb24uQXBpIiwiRHUuTWV0ZXJpbmciLCJEdS5TdG9yYWdlLlByZXNpZ25lZFVybCIsIkR1LlRyYWluaW5nLlNlcnZpY2UiLCJEdS5WYWxpZGF0aW9uLkFwaSIsImVtYWlsIiwiR2xvYmFsQ2xpZW50TWFuYWdlbWVudC5JbnRlcm5hbCIsIklkZW50aXR5U2VydmVyQXBpIiwiSW5zaWdodHMiLCJJbnNpZ2h0cy5JbnRlZ3JhdGlvbnMiLCJJbnNpZ2h0cy5SZWFsVGltZURhdGEiLCJKYW1KYW1BcGkiLCJNYW5hZ2VMaWNlbnNlIiwiT01TIiwib3BlbmlkIiwiT3JjaGVzdHJhdG9yQXBpVXNlckFjY2VzcyIsIlByb2Nlc3NNaW5pbmciLCJwcm9maWxlIiwiUkNTLkZvbGRlckF1dGhvcml6YXRpb24iLCJSQ1MuVGFnc01hbmFnZW1lbnQiLCJSZWZlcmVuY2VUb2tlbiIsIlJlaW5mZXIiLCJTQ1AuSm9icy5SZWFkIiwiU0NQLlJ1bnRpbWVzIiwiU0NQLlJ1bnRpbWVzLlJlYWQiLCJTUlMuRXZlbnRzIiwiU1JTLlJlY29tbWVuZGF0aW9ucyIsIlN0dWRpb1dlYkJhY2tlbmQiLCJTdHVkaW9XZWJUeXBlQ2FjaGVTZXJ2aWNlIiwiVGFza01pbmluZyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJleHRlcm5hbCJdLCJzdWJfdHlwZSI6InVzZXIiLCJjbGllbnRfaWQiOiIxMTE5YTkyNy0xMGFiLTQ1NDMtYmQxYS1hZDZiZmJiYzI3ZjQiLCJzdWIiOiJmZDIyNGVlYi02ZTk1LTQzZTUtYThiMC0zNjFkM2I1YmFmM2EiLCJhdXRoX3RpbWUiOjE3MTY0ODMyNjIsImlkcCI6Im9pZGMiLCJlbWFpbCI6Impvc2h1YS5wYXJrQHVpcGF0aC5jb20iLCJBc3BOZXQuSWRlbnRpdHkuU2VjdXJpdHlTdGFtcCI6IkNHVUlYV0RVM1lTWDdMNDQ3UDM1Ukc3S0VCNlhBVENYIiwiYXV0aDBfY29uIjoiZ29vZ2xlLW9hdXRoMiIsImNvdW50cnkiOiIiLCJleHRfc3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDUwODQ1NDExODE1MDY1NDk5NjMiLCJtYXJrZXRpbmdDb25kaXRpb25BY2NlcHRlZCI6IkZhbHNlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0wyRk1PRHE5NU9pYnNYbGxXcGpmUUl4SS1EMFp3VFFfdk1aYjRYWEhoSk5nOHp1Zz1zOTYtYyIsInBydF9pZCI6Ijk1NjhiZWJhLTUwYTgtNDlkMS04MDFlLWYyZDE3MTEwODlmZCIsImhvc3QiOiJGYWxzZSIsImZpcnN0X25hbWUiOiJKb3NoIiwibGFzdF9uYW1lIjoiIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6Impvc2h1YS5wYXJrQHVpcGF0aC5jb20iLCJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsImV4dF9pZHBfaWQiOiIxIiwiZXh0X2lkcF9kaXNwX25hbWUiOiJHbG9iYWxJZHAiLCJzaWQiOiJDODQ4ODk0NDBBQzRCQUU3MEUyN0U4MjhCMTgwQkE5QyIsImp0aSI6IjhBQkUyNDk3OTkyOEZBMTU4MzdBMjBFMDYxNEE3RjQ3In0.r6lfdxKZKPVTudhtyAsR8DLWPqAI_USzSeTIDr2-IHBo0YMd9x9eZ3gPhlOEAxssjRKTt_cuM-86T4dAXGGHOLHdb8rrF1YKvgg4oz4yUXmkxYDKTIsFhB7PPNpZcw7Nf0_NsPKvOfly6Fvfy9CxPhOf83jhu1GhGBSKQfXf7Ty3B1n3DOh3CS91JlC-6MIZDaNKvJcUJscQkp1sVP9MJarC32NtJni1G_tf00AUPIpbVQM3TkMViAAs_MMomnmlKAu851A_blmN9nRuGRvlmzodb5PdzYWmWFZxfxwBhAVEUyjmY6a61IrwBNmoWjq2nW8AXvEPXvL1BTijSNmTHg"
+from bs4 import BeautifulSoup
+from icecream import ic
+from playwright.sync_api import Browser, BrowserContext, Page, SyncPlaywright, expect
+from langchain_openai import AzureChatOpenAI
+
+token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NjYwODE5LCJpYXQiOjE3MTY2NjExMTksImV4cCI6MTcxNjY2NDcxOSwiYXVkIjpbIklkZW50aXR5U2VydmVyQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSJdLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjczYmE2MjI0LWQ1OTEtNGE0Zi1iM2FiLTUwOGU2NDZmMjkzMiIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjU5MjAzNiwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IkY4NDQzMkRGNTA3MDAwQkFCMDJERjk0Q0ZFNzExMDAyIiwianRpIjoiMUIyNjg0MDFCMTRBQTlERjkzMjAzNzkxNTc3MEQyNEUifQ.uaYKNZq-H4Ym1T3cGsCuwRl4kAAWysF1nk--qSbjVxnNe5lycyfEKe_Bx4SX4gQX3d1EImhUnukeNgg4BGbDYPtMUh-ngPMKECCKjZTfXQIiEP3v21MTwr6FC_eVAJ7jivF82kneLDYQYJV0YVUuNaNKFAKfioCNWTu8C_l8XVQ4g9J9QVxTLlpUPnHw4usA2hWntgV_tNunTy8At1LqjpNR3sOVVTIDAxykLuXVWZ7Aekbv6vlYhYrVfoKGOMqV4fKXxIStxxzRpn_-_illbE3B2DM_OmxR3KGNg_5H5VFq9_ZlItb1kTtHpAbLNxGp6sNuwx9y4-35fL-hmf4DUg"
 
 def get_llm():
     return AzureChatOpenAI(
         deployment_name="gpt-4-32k",
+        # deployment_name="gpt-4-vision-preview",
         openai_api_version="2023-06-01-preview",
         azure_endpoint="https://alpha.uipath.com/dcfa21f1-a818-4fab-a05d-4fd4292c9ccd/bdd155c1-6ae5-4088-acdd-4cb6bb58e267/llmgateway_/", # Standard Url routing(org/tenant) for LLM Gateway. You do not need to specify a resource name, as the LLM Gateway will route the request to the correct resource.
         openai_api_type="azure",
@@ -104,37 +105,111 @@ class PageContext:
     #     self.browser.close()
 
 
+system_prompt = """
+You are a skilled RPA developer. You will be given a simplified HTML view of a website that can build automations. Given the user's request to build a certain type of automation, your goal is to select an action to build that automation.
+Select 1 action from the <action> list that you think will accomplish the automation the user is looking to build.
+
+Here are the ONLY actions you can use. Avoid making up new actions:
+<actions>
+    <action key="ClickButton" description="clicks a button with a specific id" parameters=[id] />
+    <action key="FillInputField" description="fills in an input field with a specific id" parameters=[id, value] />
+</actions>
+
+Here are examples of valid complete responses with example data from different chat conversations: 
+[ClickButton][id: "Add activity"]
+[ClickButton][id: "Actions"]
+[FillInputField][id: "Search for an activity"][value: "your text"]
+[FillInputField][id: "Name an activity"][value: "activity name"]
+
+You must format the output exactly in the format specified above.
+
+"""
+
+def automationUnit(browser):
+    # user prompt
+    user_request = input("What would you like to automate?")
+
+    # specific for uipath studio web
+    # html_content = browser.page.query_selector('mat-drawer-content.mat-drawer-content')
+    # html_content = html_content.inner_html()
+
+    # general purpose
+    html_content = browser.page.content()
+    
+    # parse html using bs4
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    simplifiedHTML = ""
+    for tag in soup.body.find_all():
+        if tag.name not in ["style", "script", "head", "title", "meta", "[document]"]:
+            if tag.name in ["button", "input"]:
+                # new_tag = soup.new_tag(tag.name)
+                # new_tag['id'] = tag.get('id')
+
+                # if (tag.get('placeholder')):
+                #     new_tag['placeholder'] = tag.get('placeholder')
+
+                simplifiedHTML += str(tag) + "\n"
+
+    print(simplifiedHTML)
+
+    user_prompt = """
+    {user_request}
+
+    Here is a simplified HTML view of a website that can build automations:
+    {simplifiedHTML}
+    """.format(user_request=user_request, simplifiedHTML=simplifiedHTML)
+
+    model = get_llm()
+    response = model.invoke(
+        [
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
+                "role": "user",
+                "content": user_prompt
+            }
+        ]
+    )
+
+    print(response.content)
+
+    match = re.match(r'\[(\w+)\]\[id: "([^"]+)"(?:\]\[value: "([^"]+)")?\]', response.content)
+
+    action = match.group(1)
+    ariaLabel = match.group(2)
+    value = match.group(3) if match.group(3) is not None else ""
+
+    if (action == "ClickButton"):
+        target = """button[id={}]""".format("'" + ariaLabel + "'")
+        print(target)
+        browser.page.click(target)
+
+    if (action == "FillInputField"):
+        target = """input[id="{}"]""".format(ariaLabel)
+        print(target, value)
+        browser.page.fill(target, value)
+
+
 if __name__ == '__main__':
     # Example usage
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
-        browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393")
-        # browser.page.wait_for_load_state("networkidle")
+        browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
+        # browser.page.goto("https://www.google.com", wait_until="networkidle")
         
-        response = input("ready?")
+        automationUnit(browser)
+        automationUnit(browser)
+        automationUnit(browser)
+        automationUnit(browser)
+        automationUnit(browser)
+        automationUnit(browser)
+        automationUnit(browser)
 
-        html_content = browser.page.content()
-        soup = BeautifulSoup(html_content, 'html.parser')
 
-        for tag in soup.body.find_all(text=True):
-            if tag.parent.name not in ["style", "script", "head", "title", "meta", "[document]"]:
-                print(tag)
 
-        # model = get_llm()
-        # response = model.invoke(
-        #     [
-        #         {
-        #             "role": "system",
-        #             "content": "You are a helpful assistant"
-        #         },
-        #         {
-        #             "role": "user",
-        #             "content": "How are you?"
-        #         }
-        #     ]
-        # )
- 
-        # print(response.content)
 
 
 '''
@@ -143,7 +218,7 @@ one big prompt "Jarvis"
     - prompt has many actions, 
     - agent picks 1 action [ACT: my_action] with desired html tags
     - parse the action in-code, execute action (browser.button.click())
-
+ 
 [screenshot of full page]
 This is my webpage,
 
@@ -159,3 +234,6 @@ here are the ui elements that corresponds to the html tags
 [screenshot of input]
 
 '''
+
+
+# if youre interested in particular html element, you can see it via screenshot => action
