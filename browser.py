@@ -139,9 +139,9 @@ You must format the output exactly in the format specified above.
 
 def isRelevantAttrValue(x):
     if isinstance(x, list):
-        return all(0 < len(i.split()[0]) < 50 and not str(i)[0].isdigit() for i in x if i.split())
+        return all(0 < len(i) < 50 and not str(i)[0].isdigit() for i in x)
     elif isinstance(x, str):
-        return 0 < len(x.split()[0]) < 50 and not x[0].isdigit() if x.split() else False
+        return 0 < len(x) < 50 and not x[0].isdigit()
     else:
         return False
 
@@ -153,18 +153,15 @@ def prune_html(browser):
     soup = BeautifulSoup(html_content, 'html.parser')
     simplifiedHTML = ""
 
-    def trimAttrValue(x):
-        if isinstance(x, list):
-            return [i.split()[0] if len(i.split()[0]) < 50 else "" for i in x]
-        elif isinstance(x, str):
-            first_word = x.split()[0] if x.split() else ""
-            return first_word if len(first_word) < 50 else ""
-        else:
-            return ""
-
     def construct_new_tag(orig_tag):
-        new_tag_attrs = {k: trimAttrValue(v) for k, v in orig_tag.attrs.items() if isRelevantAttrKey(k) and isRelevantAttrValue(v)}
-        new_tag = soup.new_tag(orig_tag.name, **new_tag_attrs)
+        new_tag = soup.new_tag(orig_tag.name)
+        for k, v in orig_tag.attrs.items():
+            if isRelevantAttrKey(k) and isRelevantAttrValue(v):
+                value = v
+                # If value is a list (i.e class="msg-overlay artdeco-button artdeco-button...") only take the first element (i.e class="msg-overlay")
+                if isinstance(v, list):
+                    value = v[0]
+                new_tag.attrs[k] = value
         for child in orig_tag:
             if child.name:
                 child_new = construct_new_tag(child)
@@ -177,8 +174,12 @@ def prune_html(browser):
         new_tag = construct_new_tag(tag)
         if new_tag.attrs or new_tag.contents:
             simplifiedHTML += str(new_tag.prettify()) + "\n\n"
-
+    
     print(simplifiedHTML)
+    with open('output.txt', 'w') as f:
+        f.write(simplifiedHTML)
+    return simplifiedHTML
+
 
 def parse_and_execute_action(browser, response):
     print("response: ", response)
@@ -238,22 +239,9 @@ def start_agent(browser, model):
     # execute action
     parse_and_execute_action(browser, response.content)
 
-
-    # take screenshot
+    # GPT4 vision
     # screenshot_bytes = browser.page.screenshot()
     # base64_image = base64.b64encode(screenshot_bytes).decode()
-
-    # update agent on status
-    response = model.invoke([
-        *chat_history,
-        {
-            "role": "system",
-            "content": "Here is a simplified HTML view of a website : \n\n" + simplifiedHTML
-        } 
-    ])
-
-    
-    # GPT4 vision
     # chat_history.append(
     #     {
     #         "role": "system",
@@ -292,6 +280,6 @@ if __name__ == '__main__':
             "content": user_request
         })
 
-        # model = get_llm()
+        model = get_llm()
         
-        # start_agent(browser, model)
+        start_agent(browser, model)
