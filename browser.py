@@ -15,12 +15,13 @@ from playwright.sync_api._generated import Playwright as SyncPlaywright, Page, B
 from playwright.sync_api import expect
 from langchain_openai import AzureChatOpenAI
 
-token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2Njk4MDM3LCJpYXQiOjE3MTY2OTgzMzcsImV4cCI6MTcxNjcwMTkzNywiYXVkIjpbIklkZW50aXR5U2VydmVyQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSJdLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjczYmE2MjI0LWQ1OTEtNGE0Zi1iM2FiLTUwOGU2NDZmMjkzMiIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjY2MTEyNCwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IjJGOUYwNUZDRUZBMkRDMjk1QkEyNUZCQTgyMDY1NkRDIiwianRpIjoiQzcwNEU3NkJFNTI3NTk0QUIyOEQ0ODA3RDVGMEVBOTQifQ.iErqGsHvYZKaDw5AWOrhhLJrwUqCnL32p6vYt1WV6n--ZfzFJSAIZHcwtZ_jDMnttsd90RYqvhkS4UJXDMP1WurFOWslelENOdkqJuTHHUI9xvKsETxmnVWOALcCpvQa7rsvKddMB_sIVJOUDQt1rNNjFcx_KOmkkXoME8aVtjhb6K2cXui7buf9uZkibjRvdvVfTng03W7SHXnDCfRvnhR2BXdGqAtZBkxk_V999OcPfgfrlX-XVV90Zsvf9igZjWRcRT3PWueLIAFS5ANcVCEvNakrCMiWIRMjvgIzWC6prye5UdFTFWdfvUP_vqPRsMpouufW2nFqJV7uAOin3A"
+token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NzU5MTc3LCJpYXQiOjE3MTY3NTk0NzcsImV4cCI6MTcxNjc2MzA3NywiYXVkIjpbIk9yY2hlc3RyYXRvckFwaVVzZXJBY2Nlc3MiLCJNYW5hZ2VMaWNlbnNlIiwiT01TIiwiQWlGYWJyaWMiLCJCdXNpbmVzc1VzZXJQb3J0YWxQcm94eUFwaSIsIkRhdGFTZXJ2aWNlQXBpVXNlckFjY2VzcyIsIkNvbm5lY3Rpb25TZXJ2aWNlIiwiQ29ubmVjdGlvblNlcnZpY2VVc2VyIiwiSmFtSmFtQXBpIiwiSW5zaWdodHMiLCJJbnNpZ2h0cy5JbnRlZ3JhdGlvbnMiLCJQcm9jZXNzTWluaW5nIiwiVGFza01pbmluZyIsIlNlcnZlcmxlc3NDb250cm9sUGxhbmUiLCJJZGVudGl0eVNlcnZlckFwaSIsIkRvY3VtZW50VW5kZXJzdGFuZGluZyIsIkRvY3VtZW50VW5kZXJzdGFuZGluZ1MyUyIsIlVpUGF0aC5PcmNoZXN0cmF0b3IiLCJTdHVkaW9XZWJCYWNrZW5kIiwiU3R1ZGlvV2ViVHlwZUNhY2hlU2VydmljZSIsIkN1c3RvbWVyUG9ydGFsIiwiQXVkaXQiLCJVaVBhdGguRG9jdW1lbnRVbmRlcnN0YW5kaW5nIiwiQXV0b21hdGlvblNvbHV0aW9ucyIsIlJlaW5mZXIiLCJSZXNvdXJjZUNhdGFsb2dTZXJ2aWNlQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSIsIkluc2lnaHRzLlJlYWxUaW1lRGF0YSIsIkdsb2JhbENsaWVudE1hbmFnZW1lbnQuSW50ZXJuYWwiLCJBY2FkZW15Il0sInNjb3BlIjpbIkFjYWRlbXkiLCJBaUZhYnJpYyIsIkF1ZGl0LlJlYWQiLCJBdXRvbWF0aW9uU29sdXRpb25zIiwiQnVzaW5lc3NVc2VyUG9ydGFsUHJveHlBcGkiLCJDb25uZWN0aW9uU2VydmljZSIsIkNvbm5lY3Rpb25TZXJ2aWNlVXNlciIsIkN1c3RvbWVyUG9ydGFsIiwiRGF0YVNlcnZpY2VBcGlVc2VyQWNjZXNzIiwiRGlyZWN0b3J5IiwiRG9jdW1lbnRVbmRlcnN0YW5kaW5nIiwiRHUuQWlQcm94eSIsIkR1LkNsYXNzaWZpY2F0aW9uLkFwaSIsIkR1LkRpZ2l0aXphdGlvbi5BcGkiLCJEdS5FeHRyYWN0aW9uLkFwaSIsIkR1Lk1ldGVyaW5nIiwiRHUuU3RvcmFnZS5QcmVzaWduZWRVcmwiLCJEdS5UcmFpbmluZy5TZXJ2aWNlIiwiRHUuVmFsaWRhdGlvbi5BcGkiLCJlbWFpbCIsIkdsb2JhbENsaWVudE1hbmFnZW1lbnQuSW50ZXJuYWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIkluc2lnaHRzIiwiSW5zaWdodHMuSW50ZWdyYXRpb25zIiwiSW5zaWdodHMuUmVhbFRpbWVEYXRhIiwiSmFtSmFtQXBpIiwiTWFuYWdlTGljZW5zZSIsIk9NUyIsIm9wZW5pZCIsIk9SLkFkbWluaXN0cmF0aW9uLlJlYWQiLCJPcmNoZXN0cmF0b3JBcGlVc2VyQWNjZXNzIiwiUHJvY2Vzc01pbmluZyIsInByb2ZpbGUiLCJSQ1MuRm9sZGVyQXV0aG9yaXphdGlvbiIsIlJDUy5UYWdzTWFuYWdlbWVudCIsIlJlZmVyZW5jZVRva2VuIiwiUmVpbmZlciIsIlNDUC5Kb2JzLlJlYWQiLCJTQ1AuUnVudGltZXMiLCJTQ1AuUnVudGltZXMuUmVhZCIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwiU3R1ZGlvV2ViQmFja2VuZCIsIlN0dWRpb1dlYlR5cGVDYWNoZVNlcnZpY2UiLCJUYXNrTWluaW5nIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjExMTlhOTI3LTEwYWItNDU0My1iZDFhLWFkNmJmYmJjMjdmNCIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjc0ODgwOCwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IjhFRTRFQUUyNDU1MDUxMDlCMkUzRUYyQTM4RDE4ODcxIiwianRpIjoiNjQxODAzOUM3NDIyNUM4MkJCMjhGQTNDQzk2RDlGQjAifQ.LtIjJ355wbwUeLH1YRnpr_2_Go8LnlKKQMCZFwVO9NzSrDsOMs_e9rvwSwKUuWpazxHVCfYzKIJGv_I0xDePwXR4OZ935wzXerzB-AUEmuzWNe09ilTt5GagqHLmcXmOeezNnU2QKf3V6scHg9uaViDOgDKuJZJo4RZPewzWjK3HcWcEmTiP4MfcK9DolGTcu9il0r8T_e9foNhetWOrkODG0DxetC7AA1rZ2eAPL0sUQ0zrw6a-jgPZMh_x3t3Ivo2WtzEyO10-yB6h9EDal95yTiD_3aPynOyhr8dK-bjADSJtjI6LycgCRrz6XqxlYV6oDKiZLhZx3zxsg_qfEA"
 
 def get_llm():
     return AzureChatOpenAI(
-        deployment_name="gpt-4-32k",
+        # deployment_name="gpt-4-32k",
         # deployment_name="gpt-4-vision-preview",
+        deployment_name="gpt-4",
         openai_api_version="2023-06-01-preview",
         azure_endpoint="https://alpha.uipath.com/dcfa21f1-a818-4fab-a05d-4fd4292c9ccd/bdd155c1-6ae5-4088-acdd-4cb6bb58e267/llmgateway_/", # Standard Url routing(org/tenant) for LLM Gateway. You do not need to specify a resource name, as the LLM Gateway will route the request to the correct resource.
         openai_api_type="azure",
@@ -112,7 +113,6 @@ Here are the only actions you can use:
     <action key="FillInputField" description="fills in an input field with a specific id" parameters=[targetTag, value] />
     <action key="GoToUrl" description="Navigates to URL" parameters=[url] />
     <action key="GoBack" description="Navigates to previously visited URL" />
-    <action key="PressEnterKey" description="Presses Enter key on keyboard" />
     <action key="Done" description="Indicates user their request is completed" />
 </actions>
 
@@ -126,7 +126,6 @@ Here are examples of valid complete responses with example data from different c
 [GoToUrl][url: "https://www.google.com"]
 [GoToUrl][url: "https://www.linkedin.com"]
 [GoBack]
-[PressEnterKey]
 [Done]
 
 You must format the output exactly in the format specified above. DO NOT UNDER ANY CIRCUMSTANCES, MAKE UP A HTML TAG
@@ -141,7 +140,18 @@ def isRelevantAttrKey(x):
     return 0 < len(x) < 20
 
 def prune_html(browser):
-    html_content = browser.page.content()
+    # general purpose
+    # html_content = browser.page.content()
+
+    # for uipath studio (demo only)
+    html_content = browser.page.query_selector('mat-drawer-content.mat-drawer-content')
+    html_content = html_content.inner_html()
+
+    if (browser.page.query_selector('.mdc-dialog__container')): # if popup exists, show popup only
+        html_content = browser.page.query_selector('.mdc-dialog__container').inner_html()
+    if (browser.page.query_selector('.mat-mdc-dialog-surface')): # if dropdown exists, show dropdown only
+        html_content = browser.page.query_selector('.mat-mdc-dialog-surface').inner_html()
+
     soup = BeautifulSoup(html_content, 'html.parser')
     simplifiedHTML = ""
 
@@ -203,7 +213,10 @@ def parse_and_execute_action(browser, response):
         browser.page.goBack()
 
     if (action == "PressEnterKey"):
-        browser.page.keyboard.press('Enter');
+        browser.page.keyboard.press('Enter')
+
+    if (action == "PressEscKey"):
+        browser.page.keyboard.press("Escape")
 
     if (action == "Done"):
         global current_iteration
@@ -250,17 +263,21 @@ def start_agent(browser, model):
     #     }
     # )
 
+    # debugging purposes
+    with open(str(current_iteration) + 'output.txt', 'w') as f:
+        f.write(simplifiedHTML)
+
     # execute action
     parse_and_execute_action(browser, response.content)
+
+    # optional; let the page load
+    time.sleep(0.5)
 
     # update agent on progress
     chat_history.append({
         "role": "system",
-        "content": "Status update: an action has been triggered. {response}".format(response=response.content)
+        "content": "Status update: you have triggerd an action {response}. Do not repeat the same action twice in a row.".format(response=response.content)
     })
-
-    with open(str(current_iteration) + 'output.txt', 'w') as f:
-        f.write(simplifiedHTML)
 
     print("current_iteration: ", current_iteration)
     current_iteration += 1
@@ -270,9 +287,8 @@ def start_agent(browser, model):
 if __name__ == '__main__':
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
-        # browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
-        browser.page.goto("https://www.google.com")
-        
+        browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/be99476e-f6a6-465e-a60c-0bcc479c5fbf?fileId=ca159ebc-7722-42c1-af85-183c5143f326", wait_until="networkidle")
+
         # user prompt
         user_request = input("What would you like to automate?")
         chat_history.append({
@@ -282,4 +298,5 @@ if __name__ == '__main__':
 
         model = get_llm()
         
+        start_agent(browser, model)
         start_agent(browser, model)

@@ -1,0 +1,487 @@
+<input aria-label="Enter search term" autocomplete="off" class="mat-mdc-chip-input" data-cy="search-text" id="mat-mdc-chip-list-input-0" placeholder="Search for an activity" type="search"/>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Variable Value" role="gridcell">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-46" class="mat-mdc-tooltip-trigger">
+    Set Variable Value
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-47" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+    access_time
+   </mat-icon>
+   <span class="cdk-visually-hidden">
+    Recently used
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-48" class="mat-mdc-tooltip-trigger">
+   Save a value to use in later activities. The saved value can be used as input to another activity.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="UiPath.System.Activities's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Control
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-UiPath.System.Activities" role="gridcell">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="UiPath.System.Activities's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Control
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-UiPath.UIAutomation.Activities" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="UiPath.UIAutomation.Activities's icon" class="sw-package-icon-img" src="https://download.uipath.com/UIA_icon.png"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  UI Automation
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-UiPath.WebAPI.Activities" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="UiPath.WebAPI.Activities's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Web API
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-UiPath.Cryptography.Activities" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="UiPath.Cryptography.Activities's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Cryptography
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Connector Builder" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Connector Builder's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Connector Builder
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-UiPath.Pipelines.Activities" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-49" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" mattooltipposition="right" role="img">
+  star_outline
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Most used
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="UiPath.Pipelines.Activities's icon" class="sw-package-icon-img" src="https://download.uipath.com/UI_icon.png"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Pipelines
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Act! 365" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Act! 365's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Act! 365
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-ActiveCampaign" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="ActiveCampaign's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  ActiveCampaign
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Adobe Acrobat Sign" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Adobe Acrobat Sign's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Adobe Acrobat Sign
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Adobe PDF Services" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Adobe PDF Services's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Adobe PDF Services
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Bedrock" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Bedrock's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Bedrock
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Connect" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Connect's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Connect
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Polly" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Polly's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Polly
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon SageMaker" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon SageMaker's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon SageMaker
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon SageMaker" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon SageMaker's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon SageMaker
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon SES" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon SES's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon SES
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Transcribe" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Transcribe's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Transcribe
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Web Services" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Web Services's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Web Services
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon Workspaces" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon Workspaces's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon Workspaces
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Amazon WorkSpaces" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Amazon WorkSpaces's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Amazon WorkSpaces
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Anthropic Claude" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Anthropic Claude's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Anthropic Claude
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Asana" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Asana's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Asana
+ </span>
+</button>
+
+<button class="sw-cp-list-item" role="gridcell" tabindex="-1">
+ <mat-icon aria-describedby="cdk-describedby-message-ng-1-50" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" mattooltipposition="right" role="img" svgicon="sw:experimental">
+  <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path fill="currentColor">
+   </path>
+   <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+   </path>
+  </svg>
+ </mat-icon>
+ <span class="cdk-visually-hidden">
+  Preview
+ </span>
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <span class="sw-text-icon">
+   A
+  </span>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Autopilot SDK Internal
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-package-Aweber" role="gridcell" tabindex="-1">
+ <div class="sw-package-icon-bag">
+ </div>
+ <ui-package-icon>
+  <img alt="Aweber's icon" class="sw-package-icon-img"/>
+ </ui-package-icon>
+ <span class="sw-package-name">
+  Aweber
+ </span>
+</button>
+
+<button aria-checked="false" aria-labelledby="mat-mdc-slide-toggle-1-label" class="mdc-switch" id="mat-mdc-slide-toggle-1-button" role="switch" type="button">
+ <div class="mdc-switch__track">
+ </div>
+ <div class="mdc-switch__handle-track">
+  <div class="mdc-switch__handle">
+   <div class="mdc-switch__shadow">
+    <div class="mdc-elevation-overlay">
+    </div>
+   </div>
+   <div class="mdc-switch__ripple">
+    <div class="mat-ripple">
+    </div>
+   </div>
+   <div class="mdc-switch__icons">
+    <svg aria-hidden="true" class="mdc-switch__icon">
+     <path>
+     </path>
+    </svg>
+    <svg aria-hidden="true" class="mdc-switch__icon">
+     <path d="M20 13H4v-2h16v2z">
+     </path>
+    </svg>
+   </div>
+  </div>
+ </div>
+</button>
+
+<button class="mdc-button" color="primary">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  lightbulb
+ </mat-icon>
+ <span class="mdc-button__label">
+  Suggest us something new
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button aria-label="Close" class="mat-mdc-tooltip-trigger" type="button">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  close
+ </mat-icon>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+

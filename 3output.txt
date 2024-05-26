@@ -1,0 +1,1235 @@
+<input aria-label="Enter search term" autocomplete="off" class="mat-mdc-chip-input" data-cy="search-text" id="mat-mdc-chip-list-input-0" placeholder="Search for an activity" type="search"/>
+
+<button aria-label="Clear search box" class="mat-mdc-tooltip-trigger" data-cy="search-clear-filters">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  close
+ </mat-icon>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Variable Value" role="gridcell">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-52" class="mat-mdc-tooltip-trigger">
+    Set Variable Value
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-53" aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+    access_time
+   </mat-icon>
+   <span class="cdk-visually-hidden">
+    Recently used
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-54" class="mat-mdc-tooltip-trigger">
+   Save a value to use in later activities. The saved value can be used as input to another activity.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="UiPath.System.Activities's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Control
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Apps Value" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-55" class="mat-mdc-tooltip-trigger">
+    Set Apps Value
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-57" class="mat-mdc-tooltip-trigger">
+   Set value of an apps variable
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="UiPath.WorkflowEvents.Activities's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Workflow Events
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Get Apps Value" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-58" class="mat-mdc-tooltip-trigger">
+    Get Apps Value
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-59" class="mat-mdc-tooltip-trigger">
+   Get value of an apps expression
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="UiPath.WorkflowEvents.Activities's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Workflow Events
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Random Value" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-60" class="mat-mdc-tooltip-trigger">
+    Random Value
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-61" class="mat-mdc-tooltip-trigger">
+   Picks a random line in range of 0 - 2 billions from a 1-column list provided by the customer as .txt or .csv file
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="UiPath.Testing.Activities's icon" class="sw-package-icon-img" src="https://download.uipath.com/UI_icon.png"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Testing
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-62" class="mat-mdc-tooltip-trigger">
+    Demo Variable And Arguments Management
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-63" class="mat-mdc-tooltip-trigger">
+   Description
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="StudioWeb.Sdk's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Studio Web Sdk
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Object ACL" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-64" class="mat-mdc-tooltip-trigger">
+    Set Object ACL
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-65" class="mat-mdc-tooltip-trigger">
+   Sets the access control list (ACL) permissions for an object.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Amazon Web Services's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Amazon Web Services
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Security Alert State" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-66" class="mat-mdc-tooltip-trigger">
+    Set Security Alert State
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-67" class="mat-mdc-tooltip-trigger">
+   Reactivates or dismisses a security alert.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Azure's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Azure
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Manager" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-68" class="mat-mdc-tooltip-trigger">
+    Set Manager
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-69" class="mat-mdc-tooltip-trigger">
+   Sets the user's manager.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Azure Active Directory's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Azure Active Directory
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Inventory Level" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-70" class="mat-mdc-tooltip-trigger">
+    Set Inventory Level
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-71" class="mat-mdc-tooltip-trigger">
+   Set the inventory level for an item at a location
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Shopify's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Shopify
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Campaign Content" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-72" class="mat-mdc-tooltip-trigger">
+    Set Campaign Content
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-73" class="mat-mdc-tooltip-trigger">
+   Set the campaign content in Mailchimp.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Mailchimp's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Mailchimp
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Campaign Content" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-72" class="mat-mdc-tooltip-trigger">
+    Set Campaign Content
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-73" class="mat-mdc-tooltip-trigger">
+   Set the campaign content in Mailchimp.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Mailchimp's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Mailchimp
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Computer Status" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-74" class="mat-mdc-tooltip-trigger">
+    Set Computer Status
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-75" class="mat-mdc-tooltip-trigger">
+   Sets the active status of a computer.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="NetIQ eDirectory's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   NetIQ eDirectory
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set User Status" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-76" class="mat-mdc-tooltip-trigger">
+    Set User Status
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-77" class="mat-mdc-tooltip-trigger">
+   Sets the status of a user account.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="NetIQ eDirectory's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   NetIQ eDirectory
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Blob Tier" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-78" class="mat-mdc-tooltip-trigger">
+    Set Blob Tier
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-79" class="mat-mdc-tooltip-trigger">
+   Sets the access tier on a blob.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Azure's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Azure
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Channel Topic" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-80" class="mat-mdc-tooltip-trigger">
+    Set Channel Topic
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-81" class="mat-mdc-tooltip-trigger">
+   Sets the topic of a channel that is visible on the channel header
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Slack's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Slack
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Linearize a PDF" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-82" class="mat-mdc-tooltip-trigger">
+    Linearize a PDF
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-83" class="mat-mdc-tooltip-trigger">
+   Linearize a PDF to create a web-optimized version of the PDF document
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Adobe PDF Services's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Adobe PDF Services
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Compress a PDF" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-84" class="mat-mdc-tooltip-trigger">
+    Compress a PDF
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-85" class="mat-mdc-tooltip-trigger">
+   Compresses a PDF based on the level of compression needed
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Adobe PDF Services's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Adobe PDF Services
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set Bucket Policy" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-86" class="mat-mdc-tooltip-trigger">
+    Set Bucket Policy
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-87" class="mat-mdc-tooltip-trigger">
+   Sets the bucket policy.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Amazon Web Services's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Amazon Web Services
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Suspend a Member" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-88" class="mat-mdc-tooltip-trigger">
+    Suspend a Member
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-89" class="mat-mdc-tooltip-trigger">
+   Suspend a member from a team.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Dropbox's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Dropbox
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Remove a Member" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-90" class="mat-mdc-tooltip-trigger">
+    Remove a Member
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-91" class="mat-mdc-tooltip-trigger">
+   Remove a member from a team
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Dropbox's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Dropbox
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Remove a Member" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-90" class="mat-mdc-tooltip-trigger">
+    Remove a Member
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-92" class="mat-mdc-tooltip-trigger">
+   Removes a member from a team.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Dropbox Business's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Dropbox Business
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Unsuspend a Member" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-93" class="mat-mdc-tooltip-trigger">
+    Unsuspend a Member
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-94" class="mat-mdc-tooltip-trigger">
+   Unsuspend a member from a team.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Dropbox Business's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Dropbox Business
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Suspend a Member" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-88" class="mat-mdc-tooltip-trigger">
+    Suspend a Member
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-89" class="mat-mdc-tooltip-trigger">
+   Suspend a member from a team.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Dropbox Business's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Dropbox Business
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Delete a Document" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-95" class="mat-mdc-tooltip-trigger">
+    Delete a Document
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-96" class="mat-mdc-tooltip-trigger">
+   Deletes a document
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="PDFMonkey's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   PDFMonkey
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Set IAM Policy" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-97" class="mat-mdc-tooltip-trigger">
+    Set IAM Policy
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-98" class="mat-mdc-tooltip-trigger">
+   Sets the access control policy on the specified resource. It replaces any existing policy.
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Google Cloud's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Google Cloud
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Make a Call" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-99" class="mat-mdc-tooltip-trigger">
+    Make a Call
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-100" class="mat-mdc-tooltip-trigger">
+   Make a voice call to a phone number in Twilio
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Twilio's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Twilio
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Create a user" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-101" class="mat-mdc-tooltip-trigger">
+    Create a user
+   </span>
+   <mat-icon aria-describedby="cdk-describedby-message-ng-1-56" aria-hidden="true" class="mat-icon" data-mat-icon-name="experimental" data-mat-icon-type="svg" role="img" svgicon="sw:experimental">
+    <svg fill="none" focusable="false" preserveaspectratio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path fill="currentColor">
+     </path>
+     <path clip-rule="evenodd" fill="currentColor" fill-rule="evenodd">
+     </path>
+    </svg>
+   </mat-icon>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-102" class="mat-mdc-tooltip-trigger">
+   Create a new user
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Mock's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Mock
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Create a Reply" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-103" class="mat-mdc-tooltip-trigger">
+    Create a Reply
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-104" class="mat-mdc-tooltip-trigger">
+   Create a reply for ticket
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="MockFreshservice's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   MockFreshservice
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button class="sw-cp-list-item" data-cy="sw-cp-select-activity-Create a Lead" role="gridcell" tabindex="-1">
+ <ui-cp-item-picker-icon>
+  <img alt="Activity icon" aria-hidden="true" class="sw-activity-icon-url" data-cy="activity-icon-url"/>
+ </ui-cp-item-picker-icon>
+ <div class="sw-info">
+  <div class="sw-name">
+   <span aria-describedby="cdk-describedby-message-ng-1-105" class="mat-mdc-tooltip-trigger">
+    Create a Lead
+   </span>
+  </div>
+  <span aria-describedby="cdk-describedby-message-ng-1-106" class="mat-mdc-tooltip-trigger">
+   Adds a lead into the Insightly CRM
+  </span>
+ </div>
+</button>
+
+<button class="sw-command-palette-package-select" role="gridcell" tabindex="-1">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <span class="mdc-button__label">
+  <ui-package-icon>
+   <img alt="Insightly CRM's icon" class="sw-package-icon-img"/>
+  </ui-package-icon>
+  <span class="apollo-button-text-right">
+   Insightly CRM
+  </span>
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button aria-checked="false" aria-labelledby="mat-mdc-slide-toggle-2-label" class="mdc-switch" id="mat-mdc-slide-toggle-2-button" role="switch" type="button">
+ <div class="mdc-switch__track">
+ </div>
+ <div class="mdc-switch__handle-track">
+  <div class="mdc-switch__handle">
+   <div class="mdc-switch__shadow">
+    <div class="mdc-elevation-overlay">
+    </div>
+   </div>
+   <div class="mdc-switch__ripple">
+    <div class="mat-ripple">
+    </div>
+   </div>
+   <div class="mdc-switch__icons">
+    <svg aria-hidden="true" class="mdc-switch__icon">
+     <path>
+     </path>
+    </svg>
+    <svg aria-hidden="true" class="mdc-switch__icon">
+     <path d="M20 13H4v-2h16v2z">
+     </path>
+    </svg>
+   </div>
+  </div>
+ </div>
+</button>
+
+<button class="mdc-button" color="primary">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  lightbulb
+ </mat-icon>
+ <span class="mdc-button__label">
+  Suggest us something new
+ </span>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button aria-label="Close" class="mat-mdc-tooltip-trigger" type="button">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  close
+ </mat-icon>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+

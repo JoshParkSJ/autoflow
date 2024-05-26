@@ -1,0 +1,26 @@
+<input aria-label="Enter search term" autocomplete="off" class="mat-mdc-chip-input" data-cy="search-text" id="mat-mdc-chip-list-input-0" placeholder="Search for an activity" type="search"/>
+
+<button aria-label="Clear search box" class="mat-mdc-tooltip-trigger" data-cy="search-clear-filters">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  close
+ </mat-icon>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
+<button aria-label="Close" class="mat-mdc-tooltip-trigger" type="button">
+ <span class="mat-mdc-button-persistent-ripple">
+ </span>
+ <mat-icon aria-hidden="true" class="mat-icon" data-mat-icon-type="font" role="img">
+  close
+ </mat-icon>
+ <span class="mat-mdc-focus-indicator">
+ </span>
+ <span class="mat-mdc-button-touch-target">
+ </span>
+</button>
+
