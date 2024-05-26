@@ -15,7 +15,7 @@ from playwright.sync_api._generated import Playwright as SyncPlaywright, Page, B
 from playwright.sync_api import expect
 from langchain_openai import AzureChatOpenAI
 
-token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NjgwMTg1LCJpYXQiOjE3MTY2ODA0ODUsImV4cCI6MTcxNjY4NDA4NSwiYXVkIjpbIklkZW50aXR5U2VydmVyQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSJdLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjczYmE2MjI0LWQ1OTEtNGE0Zi1iM2FiLTUwOGU2NDZmMjkzMiIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjY2MTEyNCwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IjJGOUYwNUZDRUZBMkRDMjk1QkEyNUZCQTgyMDY1NkRDIiwianRpIjoiNjZBODdGRjAwNTRFMzBEQzBEODc4MURBQjg2MjA2NDMifQ.wlXcKe5Mh_t7ICPv3mHb2RAaKHVRjY-_4qTKSUp0eVrN_Oae7hrE5sLsc3BHQ19_uu7FkcdeVBQB9ulNqlrEPCHsWFaPsdlpSyBWM1Lcnu69SeiUAgxOcffaVDbMCcSnoL-FFZSs2jgF18UuqCMlDA9rtCuFhDmc9WV0aBISOtLHRfdS2VAVBOPlPwt5sOJrfmtEJUII47n20q3pns01gSI37pvQV_YZgHQDeH5wZa0fi1HWiuhlHGktiCKGov4Yo3FDgJOS_Qsm5RVVFrgfozOmKH1rzE14Xx1zuFpvrKrCuihvZ_n0OzvUe0dhxPdrAcaSuvqrxKWu8EI9yd5kug"
+token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2Njk0NDM3LCJpYXQiOjE3MTY2OTQ3MzcsImV4cCI6MTcxNjY5ODMzNywiYXVkIjpbIk9yY2hlc3RyYXRvckFwaVVzZXJBY2Nlc3MiLCJNYW5hZ2VMaWNlbnNlIiwiT01TIiwiQWlGYWJyaWMiLCJCdXNpbmVzc1VzZXJQb3J0YWxQcm94eUFwaSIsIkRhdGFTZXJ2aWNlQXBpVXNlckFjY2VzcyIsIkNvbm5lY3Rpb25TZXJ2aWNlIiwiQ29ubmVjdGlvblNlcnZpY2VVc2VyIiwiSmFtSmFtQXBpIiwiSW5zaWdodHMiLCJJbnNpZ2h0cy5JbnRlZ3JhdGlvbnMiLCJQcm9jZXNzTWluaW5nIiwiVGFza01pbmluZyIsIlNlcnZlcmxlc3NDb250cm9sUGxhbmUiLCJJZGVudGl0eVNlcnZlckFwaSIsIkRvY3VtZW50VW5kZXJzdGFuZGluZyIsIkRvY3VtZW50VW5kZXJzdGFuZGluZ1MyUyIsIlVpUGF0aC5PcmNoZXN0cmF0b3IiLCJTdHVkaW9XZWJCYWNrZW5kIiwiU3R1ZGlvV2ViVHlwZUNhY2hlU2VydmljZSIsIkN1c3RvbWVyUG9ydGFsIiwiQXVkaXQiLCJVaVBhdGguRG9jdW1lbnRVbmRlcnN0YW5kaW5nIiwiQXV0b21hdGlvblNvbHV0aW9ucyIsIlJlaW5mZXIiLCJSZXNvdXJjZUNhdGFsb2dTZXJ2aWNlQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSIsIkluc2lnaHRzLlJlYWxUaW1lRGF0YSIsIkdsb2JhbENsaWVudE1hbmFnZW1lbnQuSW50ZXJuYWwiLCJBY2FkZW15Il0sInNjb3BlIjpbIkFjYWRlbXkiLCJBaUZhYnJpYyIsIkF1ZGl0LlJlYWQiLCJBdXRvbWF0aW9uU29sdXRpb25zIiwiQnVzaW5lc3NVc2VyUG9ydGFsUHJveHlBcGkiLCJDb25uZWN0aW9uU2VydmljZSIsIkNvbm5lY3Rpb25TZXJ2aWNlVXNlciIsIkN1c3RvbWVyUG9ydGFsIiwiRGF0YVNlcnZpY2VBcGlVc2VyQWNjZXNzIiwiRGlyZWN0b3J5IiwiRG9jdW1lbnRVbmRlcnN0YW5kaW5nIiwiRHUuQWlQcm94eSIsIkR1LkNsYXNzaWZpY2F0aW9uLkFwaSIsIkR1LkRpZ2l0aXphdGlvbi5BcGkiLCJEdS5FeHRyYWN0aW9uLkFwaSIsIkR1Lk1ldGVyaW5nIiwiRHUuU3RvcmFnZS5QcmVzaWduZWRVcmwiLCJEdS5UcmFpbmluZy5TZXJ2aWNlIiwiRHUuVmFsaWRhdGlvbi5BcGkiLCJlbWFpbCIsIkdsb2JhbENsaWVudE1hbmFnZW1lbnQuSW50ZXJuYWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIkluc2lnaHRzIiwiSW5zaWdodHMuSW50ZWdyYXRpb25zIiwiSW5zaWdodHMuUmVhbFRpbWVEYXRhIiwiSmFtSmFtQXBpIiwiTWFuYWdlTGljZW5zZSIsIk9NUyIsIm9wZW5pZCIsIk9SLkFkbWluaXN0cmF0aW9uLlJlYWQiLCJPcmNoZXN0cmF0b3JBcGlVc2VyQWNjZXNzIiwiUHJvY2Vzc01pbmluZyIsInByb2ZpbGUiLCJSQ1MuRm9sZGVyQXV0aG9yaXphdGlvbiIsIlJDUy5UYWdzTWFuYWdlbWVudCIsIlJlZmVyZW5jZVRva2VuIiwiUmVpbmZlciIsIlNDUC5Kb2JzLlJlYWQiLCJTQ1AuUnVudGltZXMiLCJTQ1AuUnVudGltZXMuUmVhZCIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwiU3R1ZGlvV2ViQmFja2VuZCIsIlN0dWRpb1dlYlR5cGVDYWNoZVNlcnZpY2UiLCJUYXNrTWluaW5nIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjExMTlhOTI3LTEwYWItNDU0My1iZDFhLWFkNmJmYmJjMjdmNCIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjY2MTEyNCwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IjJGOUYwNUZDRUZBMkRDMjk1QkEyNUZCQTgyMDY1NkRDIiwianRpIjoiNDhDNkZGOTdEMjgzQTdGREJGQzQ3RTI0MUM0MTQ5OEYifQ.Qfy0MoDTCOXvVoDFA2cRa1she-2MSWrWbk-FXNtNppxvveg0_AUdyuMRCL8O9DexsjzQ8p6nIYJ9GG-YVjIKo7ynyz2IT0bGC7ekNq5NeRp4wCFCw8zOd2_C6OM_RW987DxWcEN1pAt2ExhmkMenxL-66-NjEqMxLDeqQRJv9cC_yFeCmbpMo2hVSwS5sCUWc3ltSFSe4ygJSsrgnzZk5reIty8BsKlaIJGXtlFS8hOkoYk-dsrDjPnTVt9eYr6tp4JVBryaLKhKhwlRubE-oewPoRtyjRUOrTD7aKQK9e_2InAQTqbBu-l1rQUGjZuGfc5QLh6A5O2MjIKDrg38gQ"
 
 def get_llm():
     return AzureChatOpenAI(
@@ -138,15 +138,10 @@ You must format the output exactly in the format specified above.
 ]
 
 def isRelevantAttrValue(x):
-    if isinstance(x, list):
-        return all(0 < len(i) < 50 and not str(i)[0].isdigit() for i in x)
-    elif isinstance(x, str):
-        return 0 < len(x) < 50 and not x[0].isdigit()
-    else:
-        return False
+    return 0 < len(x) < 50 and not x[0].isdigit()
 
 def isRelevantAttrKey(x):
-    return 0 < len(x) < 10
+    return 0 < len(x) < 20
 
 def prune_html(browser):
     html_content = browser.page.content()
@@ -157,27 +152,26 @@ def prune_html(browser):
         new_tag = soup.new_tag(orig_tag.name)
         for k, v in orig_tag.attrs.items():
             if isRelevantAttrKey(k) and isRelevantAttrValue(v):
-                value = v
                 # If value is a list (i.e class="msg-overlay artdeco-button artdeco-button...") only take the first element (i.e class="msg-overlay")
+                value = v
                 if isinstance(v, list):
                     value = v[0]
                 new_tag.attrs[k] = value
         for child in orig_tag:
             if child.name:
+                # html tag children
                 child_new = construct_new_tag(child)
                 new_tag.append(child_new)
             else:
+                # non-html tags, just text
                 new_tag.append(str(child))
         return new_tag
 
     for tag in soup.find_all(["button", "input", "a"]):
         new_tag = construct_new_tag(tag)
         if new_tag.attrs or new_tag.contents:
-            simplifiedHTML += str(new_tag.prettify()) + "\n\n"
+            simplifiedHTML += str(new_tag.prettify()) + "\n"
     
-    print(simplifiedHTML)
-    with open('output.txt', 'w') as f:
-        f.write(simplifiedHTML)
     return simplifiedHTML
 
 
@@ -205,14 +199,14 @@ def parse_and_execute_action(browser, response):
         browser.page.fill(target, value)
     
     if (action == "GoToUrl"):
-        browser.page.goto(url)
+        browser.page.goto(url, wait_until="networkidle")
         time.sleep(1)
 
     if (action == "GoBack"):
-        browser.page.goBack()
+        browser.page.goBack(wait_until="networkidle")
 
     if (action == "Done"):
-        global currecurrent_iteration
+        global current_iteration
         current_iteration = MAX_ITERATION
 
 MAX_ITERATION = 10
@@ -235,6 +229,8 @@ def start_agent(browser, model):
             {html}""".format(url=browser.page.url, html=simplifiedHTML)
         } 
     ])
+    with open(str(current_iteration) + 'HTML.txt', 'w') as f:
+        f.write(simplifiedHTML)
 
     # execute action
     parse_and_execute_action(browser, response.content)
@@ -261,6 +257,7 @@ def start_agent(browser, model):
     #     }
     # )
 
+    print("current_iteration: ", current_iteration)
     current_iteration += 1
     if (current_iteration < MAX_ITERATION):
         start_agent(browser, model)
@@ -268,11 +265,9 @@ def start_agent(browser, model):
 if __name__ == '__main__':
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
-        # browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
-        browser.page.goto("https://www.linkedin.com")
+        browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
+        # browser.page.goto("https://www.google.com")
         
-        simplifiedHTML = prune_html(browser)
-
         # user prompt
         user_request = input("What would you like to automate?")
         chat_history.append({
