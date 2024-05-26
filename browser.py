@@ -4,14 +4,18 @@ import random
 import re
 import subprocess
 import time
+import base64
+import time
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 from icecream import ic
-from playwright.sync_api import Browser, BrowserContext, Page, SyncPlaywright, expect
+from playwright.sync_api import sync_playwright
+from playwright.sync_api._generated import Playwright as SyncPlaywright, Page, BrowserContext, Browser
+from playwright.sync_api import expect
 from langchain_openai import AzureChatOpenAI
 
-token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NjYwODE5LCJpYXQiOjE3MTY2NjExMTksImV4cCI6MTcxNjY2NDcxOSwiYXVkIjpbIklkZW50aXR5U2VydmVyQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSJdLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjczYmE2MjI0LWQ1OTEtNGE0Zi1iM2FiLTUwOGU2NDZmMjkzMiIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjU5MjAzNiwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IkY4NDQzMkRGNTA3MDAwQkFCMDJERjk0Q0ZFNzExMDAyIiwianRpIjoiMUIyNjg0MDFCMTRBQTlERjkzMjAzNzkxNTc3MEQyNEUifQ.uaYKNZq-H4Ym1T3cGsCuwRl4kAAWysF1nk--qSbjVxnNe5lycyfEKe_Bx4SX4gQX3d1EImhUnukeNgg4BGbDYPtMUh-ngPMKECCKjZTfXQIiEP3v21MTwr6FC_eVAJ7jivF82kneLDYQYJV0YVUuNaNKFAKfioCNWTu8C_l8XVQ4g9J9QVxTLlpUPnHw4usA2hWntgV_tNunTy8At1LqjpNR3sOVVTIDAxykLuXVWZ7Aekbv6vlYhYrVfoKGOMqV4fKXxIStxxzRpn_-_illbE3B2DM_OmxR3KGNg_5H5VFq9_ZlItb1kTtHpAbLNxGp6sNuwx9y4-35fL-hmf4DUg"
+token = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjJGNUQxNzI3NEQ3NjREQzlERENGNDRBOEI3NzE5QUY2NjlCRjc4RTAiLCJ4NXQiOiJMMTBYSjAxMlRjbmR6MFNvdDNHYTltbV9lT0EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FscGhhLnVpcGF0aC5jb20vaWRlbnRpdHlfIiwibmJmIjoxNzE2NjgwMTg1LCJpYXQiOjE3MTY2ODA0ODUsImV4cCI6MTcxNjY4NDA4NSwiYXVkIjpbIklkZW50aXR5U2VydmVyQXBpIiwiU2VhcmNoUmVjb21tZW5kYXRpb25zU2VydmljZSJdLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJJZGVudGl0eVNlcnZlckFwaSIsIlNSUy5FdmVudHMiLCJTUlMuUmVjb21tZW5kYXRpb25zIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sInN1Yl90eXBlIjoidXNlciIsImNsaWVudF9pZCI6IjczYmE2MjI0LWQ1OTEtNGE0Zi1iM2FiLTUwOGU2NDZmMjkzMiIsInN1YiI6ImZkMjI0ZWViLTZlOTUtNDNlNS1hOGIwLTM2MWQzYjViYWYzYSIsImF1dGhfdGltZSI6MTcxNjY2MTEyNCwiaWRwIjoib2lkYyIsImVtYWlsIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIkFzcE5ldC5JZGVudGl0eS5TZWN1cml0eVN0YW1wIjoiQ0dVSVhXRFUzWVNYN0w0NDdQMzVSRzdLRUI2WEFUQ1giLCJhdXRoMF9jb24iOiJnb29nbGUtb2F1dGgyIiwiY291bnRyeSI6IiIsImV4dF9zdWIiOiJnb29nbGUtb2F1dGgyfDEwNTA4NDU0MTE4MTUwNjU0OTk2MyIsIm1hcmtldGluZ0NvbmRpdGlvbkFjY2VwdGVkIjoiRmFsc2UiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTDJGTU9EcTk1T2lic1hsbFdwamZRSXhJLUQwWndUUV92TVpiNFhYSGhKTmc4enVnPXM5Ni1jIiwicHJ0X2lkIjoiOTU2OGJlYmEtNTBhOC00OWQxLTgwMWUtZjJkMTcxMTA4OWZkIiwiaG9zdCI6IkZhbHNlIiwiZmlyc3RfbmFtZSI6Ikpvc2giLCJsYXN0X25hbWUiOiIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiam9zaHVhLnBhcmtAdWlwYXRoLmNvbSIsIm5hbWUiOiJqb3NodWEucGFya0B1aXBhdGguY29tIiwiZXh0X2lkcF9pZCI6IjEiLCJleHRfaWRwX2Rpc3BfbmFtZSI6Ikdsb2JhbElkcCIsInNpZCI6IjJGOUYwNUZDRUZBMkRDMjk1QkEyNUZCQTgyMDY1NkRDIiwianRpIjoiNjZBODdGRjAwNTRFMzBEQzBEODc4MURBQjg2MjA2NDMifQ.wlXcKe5Mh_t7ICPv3mHb2RAaKHVRjY-_4qTKSUp0eVrN_Oae7hrE5sLsc3BHQ19_uu7FkcdeVBQB9ulNqlrEPCHsWFaPsdlpSyBWM1Lcnu69SeiUAgxOcffaVDbMCcSnoL-FFZSs2jgF18UuqCMlDA9rtCuFhDmc9WV0aBISOtLHRfdS2VAVBOPlPwt5sOJrfmtEJUII47n20q3pns01gSI37pvQV_YZgHQDeH5wZa0fi1HWiuhlHGktiCKGov4Yo3FDgJOS_Qsm5RVVFrgfozOmKH1rzE14Xx1zuFpvrKrCuihvZ_n0OzvUe0dhxPdrAcaSuvqrxKWu8EI9yd5kug"
 
 def get_llm():
     return AzureChatOpenAI(
@@ -29,15 +33,6 @@ def get_llm():
             "Authorization": token
         }
     )
-
-###############
-# Setup Steps #
-###############
-# 1. pip install -r requirements.txt
-# 2. playwright install
-# 3. Launch chrome to setup the profile
-
-# List of actions on a page: https://playwright.dev/docs/input
 
 class BrowserProcess:
     def __init__(self, port: int | None = None, profile_dir: str | None = None):
@@ -104,136 +99,199 @@ class PageContext:
     #     self.context.close()
     #     self.browser.close()
 
+chat_history = [
+    {
+        "role": "system",
+        "content": """
+You are a navigator that can browse the internet. You will be given a simplified HTML view of a website you are currently located in. Given the user's request, your goal is to select an action to complete that request.
+Select 1 action from the <action> list that you think will accomplish the user's ask.
 
-system_prompt = """
-You are a skilled RPA developer. You will be given a simplified HTML view of a website that can build automations. Given the user's request to build a certain type of automation, your goal is to select an action to build that automation.
-Select 1 action from the <action> list that you think will accomplish the automation the user is looking to build.
-
-Here are the ONLY actions you can use. Avoid making up new actions:
+Here are the actions you can use:
 <actions>
-    <action key="ClickButton" description="clicks a button with a specific id" parameters=[id] />
-    <action key="FillInputField" description="fills in an input field with a specific id" parameters=[id, value] />
+    <action key="ClickButton" description="clicks a button with a specific id" parameters=[targetTag] />
+    <action key="FillInputField" description="fills in an input field with a specific id" parameters=[targetTag, value] />
+    <action key="GoToUrl" description="Navigates to URL" parameters=[url] />
+    <action key="GoBack" description="Navigates to previously visited URL" />
+    <action key="Done" description="Indicates user their request is completed" />
 </actions>
 
+Answer the following questions in the format "A:answer,B:answer,C:answer" etc 
+A) What HTML tag NOT listed in website HTML you are currently in would you make up to accomplish the user's request?: (make up HTML tag or N)
+B) What HTML tag listed in website HTML you are currently in would you make up to accomplish the user's request?: (list first 10 letters of tag or N)
+C) Which of the non made-up, listed HTML tag would you use to trigger your action if any? (or N)
+
 Here are examples of valid complete responses with example data from different chat conversations: 
-[ClickButton][id: "Add activity"]
-[ClickButton][id: "Actions"]
-[FillInputField][id: "Search for an activity"][value: "your text"]
-[FillInputField][id: "Name an activity"][value: "activity name"]
+A:<button id='fakeButton'>B:<button id='myButtonId'>C:<button id='myButtonId'>[ClickButton][targetTag: button[id='myButtonId']]
+A:<button aria-label='add activity'>B:<button aria-label='Add an activity'>C:<button aria-label='Add an activity'>[ClickButton][targetTag: button[aria-label='Add an activity']]
+A:<a aria-label: 'button-class-123'>B:<button class='button-class-123'>C:<button class='button-class-123'>[ClickButton][targetTag: button[class='button-class-123']]
+A:<input aria-label='search activity'>B:<input aria-label='Search for an activity'>C:<input aria-label='Search for an activity'>[FillInputField][targetTag: input[aria-label='Search for an activity']][value: "asana"]
+A:<input id='activity-search'>B:<input id='activity-searchbar-123'>C:<input id='activity-searchbar-123'>[FillInputField][targetTag: input[id='activity-searchbar-123']][value: "activity name"]
+A:<input aria-label='search term'>B:<input placeholder='Search term...'>C:<input placeholder='Search term...'>[FillInputField][targetTag: input[placeholder='Search term...']][value: "microsoft"]
+A:NB:NC:N[GoToUrl][url: "https://www.google.com"]
+A:NB:NC:N[GoToUrl][url: "https://www.linkedin.com"]
+A:NB:NC:N[GoBack]
+A:NB:NC:N[Done]
 
 You must format the output exactly in the format specified above.
+        """
+    },
+]
 
-"""
+def isRelevantAttrValue(x):
+    if isinstance(x, list):
+        return all(0 < len(i.split()[0]) < 50 and not str(i)[0].isdigit() for i in x if i.split())
+    elif isinstance(x, str):
+        return 0 < len(x.split()[0]) < 50 and not x[0].isdigit() if x.split() else False
+    else:
+        return False
 
-def automationUnit(browser):
-    # user prompt
-    user_request = input("What would you like to automate?")
+def isRelevantAttrKey(x):
+    return 0 < len(x) < 10
 
-    # specific for uipath studio web
-    # html_content = browser.page.query_selector('mat-drawer-content.mat-drawer-content')
-    # html_content = html_content.inner_html()
-
-    # general purpose
+def prune_html(browser):
     html_content = browser.page.content()
-    
-    # parse html using bs4
     soup = BeautifulSoup(html_content, 'html.parser')
-    
     simplifiedHTML = ""
-    for tag in soup.body.find_all():
-        if tag.name not in ["style", "script", "head", "title", "meta", "[document]"]:
-            if tag.name in ["button", "input"]:
-                # new_tag = soup.new_tag(tag.name)
-                # new_tag['id'] = tag.get('id')
 
-                # if (tag.get('placeholder')):
-                #     new_tag['placeholder'] = tag.get('placeholder')
+    def trimAttrValue(x):
+        if isinstance(x, list):
+            return [i.split()[0] if len(i.split()[0]) < 50 else "" for i in x]
+        elif isinstance(x, str):
+            first_word = x.split()[0] if x.split() else ""
+            return first_word if len(first_word) < 50 else ""
+        else:
+            return ""
 
-                simplifiedHTML += str(tag) + "\n"
+    def construct_new_tag(orig_tag):
+        new_tag_attrs = {k: trimAttrValue(v) for k, v in orig_tag.attrs.items() if isRelevantAttrKey(k) and isRelevantAttrValue(v)}
+        new_tag = soup.new_tag(orig_tag.name, **new_tag_attrs)
+        for child in orig_tag:
+            if child.name:
+                child_new = construct_new_tag(child)
+                new_tag.append(child_new)
+            else:
+                new_tag.append(str(child))
+        return new_tag
+
+    for tag in soup.find_all(["button", "input", "a"]):
+        new_tag = construct_new_tag(tag)
+        if new_tag.attrs or new_tag.contents:
+            simplifiedHTML += str(new_tag.prettify()) + "\n\n"
 
     print(simplifiedHTML)
 
-    user_prompt = """
-    {user_request}
+def parse_and_execute_action(browser, response):
+    print("response: ", response)
 
-    Here is a simplified HTML view of a website that can build automations:
-    {simplifiedHTML}
-    """.format(user_request=user_request, simplifiedHTML=simplifiedHTML)
+    # parses [<action>][<targetTag>: <target>][<value key>: "<value>"]
+    action_search = re.search(r'\[(\w+)\]', response)
+    action = action_search.group(1) if action_search else ""
 
-    model = get_llm()
-    response = model.invoke(
-        [
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-    )
+    target_search = re.search(r'targetTag\: (.*?\])', response)
+    target = target_search.group(1) if target_search else ""
 
-    print(response.content)
+    value_search = re.search(r'value\: "(.*?)"', response)
+    value = value_search.group(1) if value_search else ""
 
-    match = re.match(r'\[(\w+)\]\[id: "([^"]+)"(?:\]\[value: "([^"]+)")?\]', response.content)
+    url_search = re.search(r'url\: "(.*?)"', response)
+    url = url_search.group(1) if url_search else ""
 
-    action = match.group(1)
-    ariaLabel = match.group(2)
-    value = match.group(3) if match.group(3) is not None else ""
-
+    print("parsed action: ", action, target, value, url)
     if (action == "ClickButton"):
-        target = """button[id={}]""".format("'" + ariaLabel + "'")
-        print(target)
         browser.page.click(target)
 
     if (action == "FillInputField"):
-        target = """input[id="{}"]""".format(ariaLabel)
-        print(target, value)
         browser.page.fill(target, value)
+    
+    if (action == "GoToUrl"):
+        browser.page.goto(url)
+        time.sleep(1)
 
+    if (action == "GoBack"):
+        browser.page.goBack()
+
+    if (action == "Done"):
+        global currecurrent_iteration
+        current_iteration = MAX_ITERATION
+
+MAX_ITERATION = 10
+current_iteration = 0
+def start_agent(browser, model):
+    global current_iteration
+
+    # prune HTML content
+    simplifiedHTML = prune_html(browser)
+
+    # show agent HTML
+    response = model.invoke([
+        *chat_history,
+        {
+            "role": "system",
+            "content": """You are in URL {url}. Select the next appropriate action to accomplish the user's goal. 
+
+            Here is a simplified view of the website HTML you are currently in:
+            
+            {html}""".format(url=browser.page.url, html=simplifiedHTML)
+        } 
+    ])
+
+    # execute action
+    parse_and_execute_action(browser, response.content)
+
+
+    # take screenshot
+    # screenshot_bytes = browser.page.screenshot()
+    # base64_image = base64.b64encode(screenshot_bytes).decode()
+
+    # update agent on status
+    response = model.invoke([
+        *chat_history,
+        {
+            "role": "system",
+            "content": "Here is a simplified HTML view of a website : \n\n" + simplifiedHTML
+        } 
+    ])
+
+    
+    # GPT4 vision
+    # chat_history.append(
+    #     {
+    #         "role": "system",
+    #         "content": "Status update: an action has been triggered. You are in URL " + browser.page.url + ". This is the state of the current UI. Select the next appropriate action to accomplish the user's goal. You may only select ONE action and perform ONE action at a time. Do NOT make up your own HTML tags. TargetTags must be one of the simplified HTML tags provided. If you are done, simply say DONE" 
+    #         "content": [
+    #             {
+    #                 "type": "text",
+    #                 "text": "Status update: an action has been triggered. You are in URL " + browser.page.url + ". This is the state of the current UI. Select the next appropriate action to accomplish the user's goal. Do NOT make up your own HTML tags. TargetTags must be one of the simplified HTML tags provided"                    
+    #             },
+    #             {
+    #                 "type": "image_url",
+    #                 "image_url": {
+    #                     "url": f"data:image/jpeg;base64,{base64_image}"
+    #                 }                
+    #             }
+    #         ]
+    #     }
+    # )
+
+    current_iteration += 1
+    if (current_iteration < MAX_ITERATION):
+        start_agent(browser, model)
 
 if __name__ == '__main__':
-    # Example usage
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
-        browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
-        # browser.page.goto("https://www.google.com", wait_until="networkidle")
+        # browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/ca65ba20-1b78-41c2-ab4c-9188f8b37827?fileId=adaa4c39-e417-4a4f-ab34-18ff60c38393", wait_until="networkidle")
+        browser.page.goto("https://www.linkedin.com")
         
-        automationUnit(browser)
-        automationUnit(browser)
-        automationUnit(browser)
-        automationUnit(browser)
-        automationUnit(browser)
-        automationUnit(browser)
-        automationUnit(browser)
+        simplifiedHTML = prune_html(browser)
 
+        # user prompt
+        user_request = input("What would you like to automate?")
+        chat_history.append({
+            "role": "user",
+            "content": user_request
+        })
 
-
-
-
-'''
-one big prompt "Jarvis"
-    - feed it HTML (cleaned) + screenshot
-    - prompt has many actions, 
-    - agent picks 1 action [ACT: my_action] with desired html tags
-    - parse the action in-code, execute action (browser.button.click())
- 
-[screenshot of full page]
-This is my webpage,
-
-here are the ui elements that corresponds to the html tags
-
-<button>add activity</button>
-[screenshot of button]
-
-<button>add intergration</button>
-[screenshot of button]
-
-<input />
-[screenshot of input]
-
-'''
-
-
-# if youre interested in particular html element, you can see it via screenshot => action
+        # model = get_llm()
+        
+        # start_agent(browser, model)
