@@ -282,7 +282,7 @@ def parse_and_execute_action(browser, response):
 
 MAX_ITERATION = 10
 current_iteration = 0
-def start_agent(browser, model):
+def execute_instructions(browser, model):
     global current_iteration
 
     # prune HTML content
@@ -336,22 +336,68 @@ def start_agent(browser, model):
 
     current_iteration += 1
     if (current_iteration < MAX_ITERATION):
-        start_agent(browser, model)
+        execute_instructions(browser, model)
+
+
+def form_instructions(user_request):
+
+"""
+You are a planner. Your job is to convert the user's requested automation into step-by-step instructions for a RPA developer to use and build using UiPath Studio.
+
+The following is the user's automation ask: {user_request}
+
+Here are the only actions you can use:
+<actions>
+    <action key="SetVariableValue" description="Sets a variable or argument value" parameters=[variableName, value] />
+    <action key="FormatValue" description="Formats a value into desired shape" parameters=[variableName, value] />
+    <action key="AddIntegrationService" description="Adds an integration service (i.e OneDrive, Jira, Asana, etc.)" parameters=[serviceName, value] />
+</actions>
+
+Here is an example of a valid response with example data: 
+[SetVariableValue][variableName: 'Currency'][value: 'EUR']
+
+Here is another example of a valid response with example data: 
+[SetVariableValue][variableName: 'Weather'][value: 'Seattle']
+[FormatVariableValue][variableName: 'Weather'][value: 'Seattle']
+
+You must format the output exactly in the format specified above.
+
+DO NOT UNDER ANY CIRCUMSTANCES, MAKE UP AN ACTION
+
+""".format(user_request=user_request)
+
+
+
+currency_prompt = 
+"""
+Do the following steps: 
+
+1. Click add an activity 
+2. Search for "set a variable value" 
+3. Click on "set a variable value" activity 
+4. Click on the input field "click to use a variable" input 
+5. Click on the "Currency" option 
+6. In the set value contenteditable div, type in ""CAD"" (with double quotes and no backslashes) 
+7. Press escape key 
+8. Test the workflow done so far
+"""
 
 if __name__ == '__main__':
     with sync_playwright() as p:
         browser = SinglePageBrowser(BrowserProcess(), p)
         browser.page.goto("https://alpha.uipath.com/joshparktest/studio_/designer/be99476e-f6a6-465e-a60c-0bcc479c5fbf?fileId=ca159ebc-7722-42c1-af85-183c5143f326", wait_until="networkidle")
+        model = get_llm()
 
         # user prompt
         user_request = input("What would you like to automate?")
-        chat_history.append({
-            "role": "user",
-            "content": user_request
-        })
-
         print("\n")
 
-        model = get_llm()
-        
-        start_agent(browser, model)
+        # convert user prompt into studio instructions
+        instructions = form_instructions(user_request)
+        chat_history.append({
+            "role": "user",
+            "content": instructions
+        })
+
+        # execute studio instructions
+        execute_instructions(browser, model)
